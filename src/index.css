@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   BASE — Panaderías del Pueblo
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: #15100d;
+    color: #f4ebdc;
+    font-family: "Work Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: #d9a648;
+    color: #15100d;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #d9a648 #15100d;
+  }
+}
+
+@layer components {
+  /* Textura de harina / grano sobre todo el sitio */
+  .grano::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* Titulares tipo cartel */
+  .cartel {
+    font-family: "Anton", Impact, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.92;
+  }
+  .firma {
+    font-family: "Yellowtail", cursive;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* Etiqueta chica espaciada */
+  .etiqueta {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+
+  /* Botones */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-radius: 999px;
+    padding: 0.95rem 1.7rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      background 0.3s,
+      color 0.3s,
+      border-color 0.3s;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn-mostaza {
+    background: #d9a648;
+    color: #15100d;
+  }
+  .btn-mostaza:hover {
+    background: #ebc77a;
+  }
+  .btn-linea {
+    border: 1.5px solid rgba(244, 235, 220, 0.35);
+    color: #f4ebdc;
+  }
+  .btn-linea:hover {
+    border-color: #d9a648;
+    color: #d9a648;
+  }
+
+  /* Ticket del turnero (papel crema) */
+  .ticket {
+    position: relative;
+    background: #f4ebdc;
+    color: #15100d;
+  }
+
+  /* Swoosh subrayado estilo logo */
+  .swoosh {
+    position: relative;
+    display: inline-block;
+  }
+  .swoosh::after {
+    content: "";
+    position: absolute;
+    left: -4%;
+    right: -6%;
+    bottom: -0.12em;
+    height: 0.22em;
+    background: #d9a648;
+    border-radius: 999px;
+    transform: rotate(-2.5deg) skewX(-20deg);
+    z-index: -1;
+  }
+}
+
+/* Ocultar scrollbar en carruseles horizontales */
+.sin-scroll::-webkit-scrollbar {
+  display: none;
+}
+.sin-scroll {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
